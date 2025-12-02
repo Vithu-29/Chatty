@@ -43,3 +43,16 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Firebase - do not commit these
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
+
+# Firebase CLI local configs
+.firebase/
+.firebaserc
+firebase-debug.log
+firebase_app_id_file.json
+
+# Environment files
+*.env
