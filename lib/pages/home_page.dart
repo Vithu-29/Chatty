@@ -15,10 +15,13 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
-        title: const Text("Home Page"),
+        title: const Text("Chatty"),
         centerTitle: true,
-        backgroundColor: Theme.of(context).colorScheme.primary,
+        backgroundColor: Colors.transparent,
+        foregroundColor: Colors.grey,
+        elevation: 0,
       ),
       drawer: const MyDrawer(),
       body: _buildUserList(),
@@ -27,21 +30,26 @@ class HomePage extends StatelessWidget {
 
   //build user list
   Widget _buildUserList() {
-    return StreamBuilder(
-      stream: _chatService.getUsersStream(),
-      builder: (context, snapshot) {
-        if (snapshot.hasError) {
-          return const Text("Error");
-        }
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Text("Loading..");
-        }
-        return ListView(
-          children: snapshot.data!
-              .map<Widget>((userData) => _buildUserListItem(userData, context))
-              .toList(),
-        );
-      },
+    return Padding(
+      padding:
+          const EdgeInsets.only(left: 25.0, right: 25.0, top: 10.0, bottom: 0),
+      child: StreamBuilder(
+        stream: _chatService.getUsersStream(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return const Text("Error");
+          }
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Text("Loading..");
+          }
+          return ListView(
+            children: snapshot.data!
+                .map<Widget>(
+                    (userData) => _buildUserListItem(userData, context))
+                .toList(),
+          );
+        },
+      ),
     );
   }
 
@@ -62,7 +70,7 @@ class HomePage extends StatelessWidget {
           );
         },
       );
-    }else{
+    } else {
       return Container();
     }
   }
