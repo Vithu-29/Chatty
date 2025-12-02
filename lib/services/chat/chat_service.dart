@@ -23,6 +23,7 @@ class ChatService {
     final String currentUserEmail = _auth.currentUser!.email!;
     final Timestamp timestamp = Timestamp.now();
 
+    // create a new message
     Message newMessage = Message(
       senderID: currentUserID,
       senderEmail: currentUserEmail,
@@ -31,6 +32,7 @@ class ChatService {
       timestamp: timestamp,
     );
 
+    //construct chat room ID for the two users
     List<String> ids = [currentUserID, receiverID];
     ids.sort();
     String chatRoomID = ids.join('_');

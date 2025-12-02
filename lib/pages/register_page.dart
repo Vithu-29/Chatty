@@ -120,6 +120,7 @@ class RegisterPage extends StatelessWidget {
                     "LogIn now",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.primary,
                     ),
                   ),
                 ),

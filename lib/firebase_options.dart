@@ -65,4 +65,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'flutterchat-5ed99.firebasestorage.app',
     iosBundleId: 'com.example.flutterChatProject',
   );
+
 }
